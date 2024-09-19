@@ -4,7 +4,7 @@ namespace FSM
     {
         private IState _currentState;
 
-        public void SetInitialState(IState newState)
+        public void SetState(IState newState)
         {
             if(_currentState != null)
             {
