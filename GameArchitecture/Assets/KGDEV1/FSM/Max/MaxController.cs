@@ -1,4 +1,5 @@
 using FSMTest;
+using ObjectPool;
 using UnityEngine;
 
 namespace Max
@@ -7,12 +8,14 @@ namespace Max
     {
         public StateMachine stateMachine;
         public Rigidbody rb;
+        public ObjectPooler pooler;
 
         public ScratchPad sharedData => new ScratchPad();
 
         //pre instantiated states so we can just pool the states instead of initializing new ones on every switch
         public MaxIdle _idleState { get; private set; } = new MaxIdle();
         public MaxMove _moveSate { get; private set; } = new MaxMove();
+        public MaxAttack _attackState { get; private set; } = new MaxAttack();
 
 
         private void Start()

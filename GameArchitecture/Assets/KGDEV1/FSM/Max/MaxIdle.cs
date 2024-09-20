@@ -22,6 +22,11 @@ namespace Max
             {
                 onSwitch(_maxController._moveSate);
             }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                onSwitch(_maxController._attackState);
+            }
         }
 
         public override void Complete(IStateRunner runner)
