@@ -7,6 +7,7 @@ namespace Redcat
         public void Enter()
         {
             Debug.Log("Redcat IDLE");
+            
         }
 
         public void Update()

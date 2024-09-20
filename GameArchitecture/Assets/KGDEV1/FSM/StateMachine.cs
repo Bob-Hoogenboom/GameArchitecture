@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace FSMTest
+﻿namespace FSMTest
 {
     public class StateMachine
     {
