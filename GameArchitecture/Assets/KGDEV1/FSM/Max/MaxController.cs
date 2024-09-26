@@ -6,7 +6,7 @@ namespace Max
 {
     public class MaxController : MonoBehaviour, IStateRunner, IPhysicsControllable
     {
-        public StateMachine stateMachine;
+        public StateMachine<MaxController> stateMachine;
         public Rigidbody rb;
         public ObjectPooler pooler;
 
@@ -20,7 +20,7 @@ namespace Max
 
         private void Start()
         {
-            stateMachine = new StateMachine(this);
+            stateMachine = new StateMachine<MaxController>(this);
             stateMachine.SetState(_idleState);
         }
 

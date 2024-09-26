@@ -1,18 +1,17 @@
-
-using UnityEngine;
-
 namespace FSMTest
 {
-    public delegate void StateEvent( IState state );
+    //polymorphism, the ability for objects of different classes to be treated
+    //as objects of a common base class, allowing methods to be invoked on them dynamically at runtime.
+    public delegate void StateEvent<T>( IState<T> state ) where T:IStateRunner;
 
-    public interface IState
+    public interface IState<T> where T:IStateRunner
     {
-        void Start( IStateRunner runner );
-        void Update( IStateRunner runner );
-        void FixedUpdate( IStateRunner runner );
-        void Complete( IStateRunner runner );
+        void Start( T runner );
+        void Update( T runner );
+        void FixedUpdate( T runner );
+        void Complete( T runner );
 
-        StateEvent onSwitch{ get; set; }
+        StateEvent<T> onSwitch{ get; set; }
     }
 
     public interface IStateRunner

@@ -1,35 +1,29 @@
 using FSMTest;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Max
 {
-    public class MaxIdle : AState
+    public class MaxIdle : AState<MaxController>
     {
-        private MaxController _maxController;
-
-        public override void Start(IStateRunner runner)
-        {
-            _maxController = runner as MaxController;
+        public override void Start(MaxController runner)
+        { 
             base.Start(runner);
         }
 
-        public override void Update(IStateRunner runner)
+        public override void Update(MaxController runner)
         {
             if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
             {
-                onSwitch(_maxController._moveSate);
+                onSwitch(runner._moveSate);
             }
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                onSwitch(_maxController._attackState);
+                onSwitch(runner._attackState);
             }
         }
 
-        public override void Complete(IStateRunner runner)
+        public override void Complete(MaxController runner)
         {
             Debug.Log("Switching to MoveState");
             base.Complete(runner);

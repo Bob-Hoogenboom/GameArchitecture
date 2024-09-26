@@ -1,11 +1,11 @@
 ﻿namespace FSMTest
 {
-    public class StateMachine
+    public class StateMachine<T> where T: IStateRunner
     {
-        private IStateRunner owner;
-        private IState currentState;
+        private T owner;
+        private IState<T> currentState;
 
-        public StateMachine( IStateRunner _owner )
+        public StateMachine( T _owner )
         {
             owner = _owner;
         }
@@ -26,7 +26,7 @@
             }
         }
 
-        public void SetState( IState newState )
+        public void SetState( IState<T> newState )
         {
             if ( currentState != null )
             {

@@ -1,12 +1,12 @@
 ﻿namespace FSMTest
 {
-    public abstract class AState : IState
+    public abstract class AState<T> :IState<T> where T : IStateRunner
     {
-        public virtual void Start( IStateRunner runner ){}
-        public virtual void Update( IStateRunner runner ){}
-        public virtual void FixedUpdate( IStateRunner runner ){}
-        public virtual void Complete( IStateRunner runner ){}
+        public virtual void Start( T runner ){}
+        public virtual void Update( T runner ){}
+        public virtual void FixedUpdate( T runner ){}
+        public virtual void Complete( T runner ){}
 
-        public StateEvent onSwitch{ get; set; }
+        public StateEvent<T> onSwitch{ get; set; }
     }
 }
